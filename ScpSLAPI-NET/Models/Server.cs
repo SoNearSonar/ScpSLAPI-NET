@@ -10,6 +10,9 @@ namespace ScpSLAPI_NET.Models
         [JsonProperty(PropertyName = "Port")]
         public int Port { get; set; }
 
+        [JsonProperty(PropertyName = "Online")]
+        public bool Online { get; set; }
+
         [JsonProperty(PropertyName = "LastOnline")]
         public string LastOnline { get; set; }
 
@@ -21,6 +24,12 @@ namespace ScpSLAPI_NET.Models
 
         [JsonProperty(PropertyName = "Info")]
         public string Info { get; set; }
+
+        [JsonProperty(PropertyName = "Version")]
+        public string Version { get; set; }
+
+        [JsonProperty(PropertyName = "Pastebin")]
+        public string Pastebin { get; set; }
 
         [JsonProperty(PropertyName = "FF")]
         public bool HasFriendlyFire { get; set; }
