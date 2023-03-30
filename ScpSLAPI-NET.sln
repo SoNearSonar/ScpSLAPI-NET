@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScpSLAPI-NET", "ScpSLAPI-NET\ScpSLAPI-NET.csproj", "{AB942322-65B4-43BF-8A77-FBB5FC569434}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScpSLAPI-NET.Test", "ScpSLAPI-NET.Test\ScpSLAPI-NET.Test.csproj", "{7E06722C-1D13-473B-8FB9-4BAD71E857C6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB942322-65B4-43BF-8A77-FBB5FC569434}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB942322-65B4-43BF-8A77-FBB5FC569434}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB942322-65B4-43BF-8A77-FBB5FC569434}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB942322-65B4-43BF-8A77-FBB5FC569434}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E06722C-1D13-473B-8FB9-4BAD71E857C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E06722C-1D13-473B-8FB9-4BAD71E857C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E06722C-1D13-473B-8FB9-4BAD71E857C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E06722C-1D13-473B-8FB9-4BAD71E857C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D3E9555F-A5D1-4605-9443-C32215112AA0}
+	EndGlobalSection
+EndGlobal
