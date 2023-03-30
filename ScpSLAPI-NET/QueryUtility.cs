@@ -32,8 +32,11 @@ namespace ScpSLAPI_NET
         internal static string FormatQueryParams(FullServerSearchSettings settings)
         {
             string query = "";
-            query += AddMinimalQueryParam("minimal", settings.IsMinimalSearch);
-            query += AddQueryParam("key", settings.ApiKey);
+            if (settings != null)
+            {
+                query += AddMinimalQueryParam("minimal", settings.IsMinimalSearch);
+                query += AddQueryParam("key", settings.ApiKey);
+            }
             query += AddQueryParam("format", "json");
 
             if (string.IsNullOrWhiteSpace(query))
