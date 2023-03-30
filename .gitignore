@@ -18,3 +18,9 @@ ScpSLAPI-NET/bin/Debug/net6.0/
 ScpSLAPI-NET/obj/Debug/net6.0/
 
 ScpSLAPI-NET/obj/
+
+ScpSLAPI-NET.Test/bin/Release/net6.0/
+
+ScpSLAPI-NET/bin/Debug/
+
+ScpSLAPI-NET/bin/Release/net6.0/
