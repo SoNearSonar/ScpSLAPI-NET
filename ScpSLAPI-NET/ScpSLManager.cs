@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using ScpSLAPI_NET.Exceptions;
 using ScpSLAPI_NET.Models;
 using System.Net;
@@ -92,7 +92,7 @@ namespace ScpSLAPI_NET
         {
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Accept", "application/json");
-            client.DefaultRequestHeaders.Add("User-Agent", "ScpSLGame-NET/1.0");
+            client.DefaultRequestHeaders.Add("User-Agent", "ScpSLAPI-NET/1.0");
             return await client.GetAsync(apiUrl);
         }
     }
