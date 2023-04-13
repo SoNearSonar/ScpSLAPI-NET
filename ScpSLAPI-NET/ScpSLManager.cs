@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
+using ScpSLAPI_NET.Exceptions;
 using ScpSLAPI_NET.Models;
 using System.Net;
 
@@ -25,6 +26,13 @@ namespace ScpSLAPI_NET
 
         public async Task<List<FullServer>> GetAlternativeFullServerListAsync(string alternativeUrl)
         {
+            bool result = Uri.TryCreate(alternativeUrl, UriKind.Absolute, out Uri uriResult)
+                && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+
+            if (!result)
+            {
+                throw new SLRequestException("Invalid URL provided");
+            }
             return await MakeApiCall<List<FullServer>>(alternativeUrl);
         }
 
@@ -38,7 +46,7 @@ namespace ScpSLAPI_NET
                 return DeserializeObject<T>(response);
             }
 
-            throw new HttpRequestException($"{message.StatusCode} code - Request was not successful");
+            throw new SLRequestException($"{message.StatusCode} code - Request was not successful");
         }
 
         private async Task<T> MakeApiCall<T>(string apiUrl, FullServerSearchSettings settings = null)
@@ -52,7 +60,7 @@ namespace ScpSLAPI_NET
                 return DeserializeObject<T>(response);
             }
 
-            throw new HttpRequestException($"{message.StatusCode} code - Request was not successful");
+            throw new SLRequestException($"{message.StatusCode} code - Request was not successful");
         }
 
         private async Task<string> MakeApiIpCall<T>(string apiUrl)
@@ -63,13 +71,21 @@ namespace ScpSLAPI_NET
                 return await message.Content.ReadAsStringAsync();
             }
 
-            throw new HttpRequestException($"{message.StatusCode} code - Request was not successful");
+            throw new SLRequestException($"{message.StatusCode} code - Request was not successful");
 
         }
 
         private T DeserializeObject<T>(string contents)
         {
-            return JsonConvert.DeserializeObject<T>(contents);
+            try
+            {
+                return JsonConvert.DeserializeObject<T>(contents);
+            }
+            catch (JsonSerializationException ex)
+            {
+                throw new SLRequestJsonException("The information to parse is not in the right JSON format");
+            }
+
         }
 
         private async Task<HttpResponseMessage> CreateApiCall(string apiUrl)
