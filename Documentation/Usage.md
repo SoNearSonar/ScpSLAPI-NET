@@ -6,9 +6,12 @@ It supports:
 - Getting server info
 - Getting lobby lists (works for 3rd party API's)
 
-## Note
-- Exceptions are in the form of AggregateException with the InnerException property being HttpRequestException
-- List<FullServer> has an extension method to sort the results by a variety of keys (according to how Northwood sorts their lists) called SortFullServerList()
+## Notes
+1. Exceptions are in the form of AggregateException with the InnerException property being different based on what is done:
+- SLRequestException - Invalid information passed when getting server info, Northwood lobby list information, or unavailable/down 3rd party API list link
+- SLRequestJsonException - JSON contents from 3rd party API list link is not in the right format 
+
+2. List<FullServer> has an extension method to sort the results by a variety of keys (according to how Northwood sorts their lists) called SortFullServerList()
 
 ## Examples
 Below are examples of C# API calls for getting resources from these API's
