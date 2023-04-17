@@ -33,6 +33,7 @@ namespace ScpSLAPI_NET
             {
                 throw new SLRequestException("Invalid URL provided");
             }
+
             return await MakeApiCall<List<FullServer>>(alternativeUrl);
         }
 
