@@ -13,8 +13,9 @@
     <RepositoryUrl>https://github.com/SoNearSonar/ScpSLAPI-NET</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>c#;api;scp;wrapper</PackageTags>
-    <PackageReleaseNotes>Initial release of ScpSLAPI-NET</PackageReleaseNotes>
+    <PackageReleaseNotes>Added new exceptions (SLRequestException and SLRequestJsonException). Updated User-Agent name.</PackageReleaseNotes>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
