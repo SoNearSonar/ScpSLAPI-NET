@@ -24,6 +24,19 @@ namespace ScpSLAPI_NET
             return await MakeApiCall<List<FullServer>>($"{_url}/lobbylist.php", settings).ConfigureAwait(false);
         }
 
+        public async Task<ServerInfo> GetAlternativeServerInfoAsync(string alternativeUrl, ServerSearchSettings settings)
+        {
+            bool result = Uri.TryCreate(alternativeUrl, UriKind.Absolute, out Uri uriResult)
+                && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+
+            if (!result)
+            {
+                throw new SLRequestException("Invalid URL provided");
+            }
+
+            return await MakeApiCall<ServerInfo>(alternativeUrl, settings).ConfigureAwait(false);
+        }
+
         public async Task<List<FullServer>> GetAlternativeFullServerListAsync(string alternativeUrl)
         {
             bool result = Uri.TryCreate(alternativeUrl, UriKind.Absolute, out Uri uriResult)
@@ -84,7 +97,7 @@ namespace ScpSLAPI_NET
             }
             catch (JsonSerializationException ex)
             {
-                throw new SLRequestJsonException("The information to parse is not in the right JSON format");
+                throw new SLRequestJsonException($"There was an error formatting the response to the correct JSON object: {ex.Message}");
             }
 
         }
