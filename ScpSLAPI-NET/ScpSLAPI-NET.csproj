@@ -13,9 +13,9 @@
     <RepositoryUrl>https://github.com/SoNearSonar/ScpSLAPI-NET</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>c#;api;scp;wrapper</PackageTags>
-    <PackageReleaseNotes>Added new exceptions (SLRequestException and SLRequestJsonException). Updated User-Agent name.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added support for 3rd party API /serverinfo (ServerInfo) objects. SLRequestJsonException message is more descriptive</PackageReleaseNotes>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

@@ -72,6 +72,27 @@ foreach (FullServer server in servers)
 }
 ```
 
+### Getting server info
+```csharp
+ScpSLManager gameManager = new ScpSLManager();
+ServerSearchSettings settings = new ServerSearchSettings()
+{
+	ApiKey = "test_api_key"
+};
+
+ServerInfo serverList = await gameManager.GetAlternativeServerInfoAsync("https://api.scpsecretlab.pl/serverinfo", settings);
+
+foreach (Server server in serverList.Servers)
+{
+	Console.WriteLine("Server ID: " + server.ID);
+	Console.WriteLine("Server port: " + server.Port);
+	Console.WriteLine("Server is online? " + server.Online);
+	Console.WriteLine("Server was last online: " + server.LastOnline);
+	Console.WriteLine("Server version: " + server.Version);
+	Console.WriteLine("Server pastebin ID: " + server.Pastebin);
+}
+```
+
 ### Getting lobby list from 3rd party API
 ```csharp
 ScpSLManager gameManager = new ScpSLManager();
