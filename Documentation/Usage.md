@@ -72,7 +72,7 @@ foreach (FullServer server in servers)
 }
 ```
 
-### Getting server info
+### Getting server info from 3rd party API
 ```csharp
 ScpSLManager gameManager = new ScpSLManager();
 ServerSearchSettings settings = new ServerSearchSettings()
