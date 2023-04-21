@@ -3,8 +3,8 @@ ScpSLAPI-NET is a C# API wrapper for api.scpslgame.com and other 3rd party lobby
 
 It supports:
 - Getting IP address
-- Getting server info
-- Getting lobby lists (works for 3rd party API's)
+- Getting server info (also from 3rd party API's)
+- Getting lobby lists (also from 3rd party API's)
 
 ## Notes
 1. Exceptions are in the form of AggregateException with the InnerException property being different based on what is done:
