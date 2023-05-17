@@ -1,5 +1,5 @@
 # ScpSLAPI-NET
-## A C# wrapper for api.scpslgame.com and other 3rd party API lists for the game SCP: Secret Laboratory. Responsible for getting closest servers to the user
+## A client for SCP: Secret Laboratory's lobby/server API & unofficial ones, written in C#/NET
 
 ## Credits:
 - [Northwood Studios](https://store.steampowered.com/developer/NWStudios) - [SCP: Secret Laboratory](https://store.steampowered.com/app/700330/SCP_Secret_Laboratory/)
