@@ -3,7 +3,6 @@
     public class ServerSearchSettings
     {
         public uint ID { get; set; }
-        public string ApiKey { get; set; }
         public bool? AddLastOnline { get; set; }
         public bool? AddPlayers { get; set; }
         public bool? AddPlayersList { get; set; }

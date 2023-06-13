@@ -1,67 +1,67 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace ScpSLAPI_NET.Models
 {
     public class FullServer
     {
-        [JsonProperty(PropertyName = "serverId")]
+        [JsonPropertyName("serverId")]
         public int ServerId { get; set; }
 
-        [JsonProperty(PropertyName = "accountId")]
-        public string AccountId { get; set; }
+        [JsonPropertyName("accountId")]
+        public int AccountId { get; set; }
 
-        [JsonProperty(PropertyName = "ip")]
+        [JsonPropertyName("ip")]
         public string IP { get; set; }
 
-        [JsonProperty(PropertyName = "port")]
+        [JsonPropertyName("port")]
         public int Port { get; set; }
 
-        [JsonProperty(PropertyName = "players")]
+        [JsonPropertyName("players")]
         public string Players { get; set; }
 
-        [JsonProperty(PropertyName = "distance")]
+        [JsonPropertyName("distance")]
         public int Distance { get; set; }
 
-        [JsonProperty(PropertyName = "info")]
+        [JsonPropertyName("info")]
         public string Info { get; set; }
 
-        [JsonProperty(PropertyName = "pastebin")]
+        [JsonPropertyName("pastebin")]
         public string Pastebin { get; set; }
 
-        [JsonProperty(PropertyName = "version")]
+        [JsonPropertyName("version")]
         public string Version { get; set; }
 
-        [JsonProperty(PropertyName = "privateBeta")]
+        [JsonPropertyName("privateBeta")]
         public bool IsPrivateBeta { get; set; }
 
-        [JsonProperty(PropertyName = "modded")]
+        [JsonPropertyName("modded")]
         public bool IsModded { get; set; }
 
-        [JsonProperty(PropertyName = "modFlags")]
+        [JsonPropertyName("modFlags")]
         public int ModFlags { get; set; }
 
-        [JsonProperty(PropertyName = "whitelist")]
+        [JsonPropertyName("whitelist")]
         public bool HasWhitelist { get; set; }
 
-        [JsonProperty(PropertyName = "isoCode")]
+        [JsonPropertyName("isoCode")]
         public string ISOCode { get; set; }
 
-        [JsonProperty(PropertyName = "continentCode")]
+        [JsonPropertyName("continentCode")]
         public string ContinentCode { get; set; }
 
-        [JsonProperty(PropertyName = "latitude")]
+        [JsonPropertyName("latitude")]
         public float Latitude { get; set; }
 
-        [JsonProperty(PropertyName = "longitude")]
+        [JsonPropertyName("longitude")]
         public float Longitude { get; set; }
 
-        [JsonProperty(PropertyName = "official")]
+        [JsonPropertyName("official")]
         public string OfficialTitle { get; set; }
 
-        [JsonProperty(PropertyName = "officialCode")]
+        [JsonPropertyName("officialCode")]
         public int OfficialCode { get; set; }
 
-        [JsonProperty(PropertyName = "displaySection")]
+        [JsonPropertyName("displaySection")]
         public int DisplaySection { get; set; }
     }
 }

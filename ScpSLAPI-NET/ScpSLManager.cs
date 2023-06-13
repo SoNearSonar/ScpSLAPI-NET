@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
 using ScpSLAPI_NET.Exceptions;
 using ScpSLAPI_NET.Models;
 using System.Net;
@@ -8,6 +8,14 @@ namespace ScpSLAPI_NET
     public class ScpSLManager
     {
         private readonly string _url = "https://api.scpslgame.com";
+        private string _apiKey = string.Empty;
+
+        public ScpSLManager(string apiKey)
+        {
+            _apiKey = apiKey;
+        }
+
+        public ScpSLManager() { }
 
         public async Task<string> GetIpAddressAsync()
         {
@@ -16,11 +24,21 @@ namespace ScpSLAPI_NET
 
         public async Task<ServerInfo> GetServerInfoAsync(ServerSearchSettings settings)
         {
+            if (string.IsNullOrWhiteSpace(_apiKey))
+            {
+                throw new SLRequestException("This method call requires an API key to use");
+            }
+
             return await MakeApiCall<ServerInfo>($"{_url}/serverinfo.php", settings).ConfigureAwait(false);
         }
 
         public async Task<List<FullServer>> GetFullServerListAsync(FullServerSearchSettings settings)
         {
+            if (string.IsNullOrWhiteSpace(_apiKey))
+            {
+                throw new SLRequestException("This method call requires an API key to use");
+            }
+
             return await MakeApiCall<List<FullServer>>($"{_url}/lobbylist.php", settings).ConfigureAwait(false);
         }
 
@@ -32,6 +50,10 @@ namespace ScpSLAPI_NET
             if (!result)
             {
                 throw new SLRequestException("Invalid URL provided");
+            }
+            else if (string.IsNullOrWhiteSpace(_apiKey))
+            {
+                throw new SLRequestException("This method call requires an API key to use");
             }
 
             return await MakeApiCall<ServerInfo>(alternativeUrl, settings).ConfigureAwait(false);
@@ -53,6 +75,7 @@ namespace ScpSLAPI_NET
         private async Task<T> MakeApiCall<T>(string apiUrl, ServerSearchSettings settings)
         {
             string queryString = QueryUtility.FormatQueryParams(settings);
+
             HttpResponseMessage message = await CreateApiCall($"{apiUrl}?{queryString}");
             if (message.StatusCode == HttpStatusCode.OK)
             {
@@ -65,7 +88,12 @@ namespace ScpSLAPI_NET
 
         private async Task<T> MakeApiCall<T>(string apiUrl, FullServerSearchSettings settings = null)
         {
-            string queryString = $"{apiUrl}?{QueryUtility.FormatQueryParams(settings)}";
+            string query = QueryUtility.FormatQueryParams(settings);
+            if (!string.IsNullOrWhiteSpace(_apiKey))
+            {
+                query += QueryUtility.AddQueryParam("key", _apiKey);
+            }
+            string queryString = $"{apiUrl}?{query}";
 
             HttpResponseMessage message = await CreateApiCall(queryString);
             if (message.StatusCode == HttpStatusCode.OK)
@@ -93,9 +121,9 @@ namespace ScpSLAPI_NET
         {
             try
             {
-                return JsonConvert.DeserializeObject<T>(contents);
+                return JsonSerializer.Deserialize<T>(contents);
             }
-            catch (JsonSerializationException ex)
+            catch (JsonException ex)
             {
                 throw new SLRequestJsonException($"There was an error formatting the response to the correct JSON object: {ex.Message}");
             }
@@ -106,7 +134,7 @@ namespace ScpSLAPI_NET
         {
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Accept", "application/json");
-            client.DefaultRequestHeaders.Add("User-Agent", "ScpSLAPI-NET/1.0");
+            client.DefaultRequestHeaders.Add("User-Agent", "ScpSLAPI-NET/2.0");
             return await client.GetAsync(apiUrl);
         }
     }

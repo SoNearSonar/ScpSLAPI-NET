@@ -8,7 +8,7 @@ It supports:
 
 ## Notes
 1. Exceptions are in the form of AggregateException with the InnerException property being different based on what is done:
-- SLRequestException - Invalid information passed when getting server info, Northwood lobby list information, or unavailable/down 3rd party API list link
+- SLRequestException - Invalid information passed when getting server info, Northwood lobby list information, unavailable/down 3rd party API list link, or no API key provided
 - SLRequestJsonException - JSON contents from 3rd party API list link is not in the right format 
 
 2. List<FullServer> has an extension method to sort the results by a variety of keys (according to how Northwood sorts their lists) called SortFullServerList()
@@ -25,12 +25,12 @@ Console.WriteLine("IP Address: " + IPAddress);
 
 ### Getting server info
 ```csharp
-ScpSLManager gameManager = new ScpSLManager();
+ScpSLManager gameManager = new ScpSLManager("test_api_key");
 ServerSearchSettings settings = new ServerSearchSettings()
 {
 	ID = 123456,
-	ApiKey = "test_api_key"
 	AddIsOnline = true,
+	AddLastOnline = true,
 	AddPastebin = true,
 	AddVersion = true
 };
@@ -50,11 +50,10 @@ foreach (Server server in serverList.Servers)
 
 ### Getting lobby list from api.scpslgame.com
 ```csharp
-ScpSLManager gameManager = new ScpSLManager();
+ScpSLManager gameManager = new ScpSLManager("test_api_key");
 FullServerSearchSettings settings = new FullServerSearchSettings()
 {
 	IsMinimalSearch = true,
-	ApiKey = "test_api_key"
 };
 
 List<FullServer> servers = await gameManager.GetFullServerListAsync(settings);
@@ -74,10 +73,14 @@ foreach (FullServer server in servers)
 
 ### Getting server info from 3rd party API
 ```csharp
-ScpSLManager gameManager = new ScpSLManager();
+ScpSLManager gameManager = new ScpSLManager("test_api_key");
 ServerSearchSettings settings = new ServerSearchSettings()
 {
-	ApiKey = "test_api_key"
+	ID = 123456,
+	AddIsOnline = true,
+	AddLastOnline = true,
+	AddPastebin = true,
+	AddVersion = true
 };
 
 ServerInfo serverList = await gameManager.GetAlternativeServerInfoAsync("https://api.scpsecretlab.pl/serverinfo", settings);

@@ -3,6 +3,5 @@
     public class FullServerSearchSettings
     {
         public bool? IsMinimalSearch { get; set; }
-        public string ApiKey { get; set; }
     }
 }

@@ -8,7 +8,6 @@ namespace ScpSLAPI_NET
         {
             string query = "";
             query += AddQueryParam("id", settings.ID);
-            query += AddQueryParam("key", settings.ApiKey);
             query += AddQueryParam("lo", settings.AddLastOnline);
             query += AddQueryParam("players", settings.AddPlayers);
             query += AddQueryParam("list", settings.AddPlayersList);
@@ -35,7 +34,6 @@ namespace ScpSLAPI_NET
             if (settings != null)
             {
                 query += AddMinimalQueryParam("minimal", settings.IsMinimalSearch);
-                query += AddQueryParam("key", settings.ApiKey);
             }
                 
             return query.Substring(0, query.Length - 1);

@@ -1,19 +1,19 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace ScpSLAPI_NET.Models
 {
     public class ServerInfo
     {
-        [JsonProperty(PropertyName = "Success")]
+        [JsonPropertyName("Success")]
         public bool Success { get; set; }
 
-        [JsonProperty(PropertyName = "Error")]
+        [JsonPropertyName("Error")]
         public string Error { get; set; }
 
-        [JsonProperty(PropertyName = "Servers")]
+        [JsonPropertyName("Servers")]
         public List<Server> Servers { get; set; }
 
-        [JsonProperty(PropertyName = "Cooldown")]
+        [JsonPropertyName("Cooldown")]
         public uint Cooldown { get; set; }
     }
 }

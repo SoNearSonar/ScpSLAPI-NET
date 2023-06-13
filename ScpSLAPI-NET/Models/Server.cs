@@ -1,52 +1,52 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace ScpSLAPI_NET.Models
 {
     public class Server
     {
-        [JsonProperty(PropertyName = "ID")]
+        [JsonPropertyName("ID")]
         public int ID { get; set; }
 
-        [JsonProperty(PropertyName = "Port")]
+        [JsonPropertyName("Port")]
         public int Port { get; set; }
 
-        [JsonProperty(PropertyName = "Online")]
+        [JsonPropertyName("Online")]
         public bool Online { get; set; }
 
-        [JsonProperty(PropertyName = "LastOnline")]
+        [JsonPropertyName("LastOnline")]
         public string LastOnline { get; set; }
 
-        [JsonProperty(PropertyName = "Players")]
+        [JsonPropertyName("Players")]
         public string Players { get; set; }
 
-        [JsonProperty(PropertyName = "PlayersList")]
+        [JsonPropertyName("PlayersList")]
         public List<string> PlayersList { get; set; }
 
-        [JsonProperty(PropertyName = "Info")]
+        [JsonPropertyName("Info")]
         public string Info { get; set; }
 
-        [JsonProperty(PropertyName = "Version")]
+        [JsonPropertyName("Version")]
         public string Version { get; set; }
 
-        [JsonProperty(PropertyName = "Pastebin")]
+        [JsonPropertyName("Pastebin")]
         public string Pastebin { get; set; }
 
-        [JsonProperty(PropertyName = "FF")]
+        [JsonPropertyName("FF")]
         public bool HasFriendlyFire { get; set; }
 
-        [JsonProperty(PropertyName = "WL")]
+        [JsonPropertyName("WL")]
         public bool Whitelist { get; set; }
 
-        [JsonProperty(PropertyName = "Modded")]
+        [JsonPropertyName("Modded")]
         public string IsModded { get; set; }
 
-        [JsonProperty(PropertyName = "Mods")]
+        [JsonPropertyName("Mods")]
         public int ModsCount { get; set; }
 
-        [JsonProperty(PropertyName = "Suppress")]
+        [JsonPropertyName("Suppress")]
         public bool IsHiddenFromList { get; set; }
 
-        [JsonProperty(PropertyName = "AutoSuppress")]
+        [JsonPropertyName("AutoSuppress")]
         public bool IsHiddenAutomatically { get; set; }
     }
 }
