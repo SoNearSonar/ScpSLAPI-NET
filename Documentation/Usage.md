@@ -23,7 +23,7 @@ string IPAddress = await gameManager.GetIpAddressAsync();
 Console.WriteLine("IP Address: " + IPAddress);
 ```
 
-### Getting server info
+### Getting server info from api.scpslgame.com
 ```csharp
 ScpSLManager gameManager = new ScpSLManager("test_api_key");
 ServerSearchSettings settings = new ServerSearchSettings()
